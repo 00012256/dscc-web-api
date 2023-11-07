@@ -1,24 +1,4 @@
-﻿-- Create Authors table
-CREATE TABLE Authors (
-    AuthorId INT PRIMARY KEY IDENTITY(1,1),
-    FirstName NVARCHAR(50) NOT NULL,
-    LastName NVARCHAR(50) NOT NULL,
-    Email NVARCHAR(100) NOT NULL,
-    Biography NVARCHAR(MAX)
-);
-
--- Create Posts table
-CREATE TABLE Posts (
-    PostId INT PRIMARY KEY IDENTITY(1,1),
-    Title NVARCHAR(255) NOT NULL,
-    Content NVARCHAR(MAX) NOT NULL,
-    PublicationDate DATE NOT NULL,
-    LastUpdated DATE NOT NULL,
-    AuthorId INT,
-    FOREIGN KEY (AuthorId) REFERENCES Authors (AuthorId)
-);
-
--- Insert authors
+﻿-- Insert authors
 INSERT INTO Authors (FirstName, LastName, Email, Biography)
 VALUES
     ('Anvar', 'Rashidov', 'anvar@example.com', 'Biography for Anvar Rashidov'),

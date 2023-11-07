@@ -16,5 +16,4 @@ namespace dscc_web_api.Models
 
         public string Biography { get; set; }
     }
-
 }

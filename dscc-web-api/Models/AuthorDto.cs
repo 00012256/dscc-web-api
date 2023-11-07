@@ -2,10 +2,8 @@
 
 namespace dscc_web_api.Models
 {
-    public class Author
+    public class AuthorDto
     {
-        public int AuthorId { get; set; }
-
         [Required]
         public string FirstName { get; set; }
 
@@ -17,7 +15,6 @@ namespace dscc_web_api.Models
         public string Email { get; set; }
 
         public string Biography { get; set; }
-
-        public List<Post> Posts { get; set; }
     }
+
 }

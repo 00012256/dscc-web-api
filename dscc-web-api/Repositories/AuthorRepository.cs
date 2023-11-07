@@ -45,10 +45,15 @@ namespace dscc_web_api.Repositories
             }
         }
 
-        public Author GetAuthorById(int authorId)
+        public Author? GetAuthorById(int authorId)
         {
             var author = _context.Authors.Find(authorId);
-            _context.Entry(author).Reference(a => a.Posts).Load();
+
+            if (author != null)
+            {
+                _context.Entry(author).Collection(a => a.Posts).Load();
+            }
+
             return author;
         }
 

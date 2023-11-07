@@ -7,7 +7,7 @@ namespace dscc_web_api.Repositories
         void InsertAuthor(Author author);
         void UpdateAuthor(Author author);
         void DeleteAuthor(int authorId);
-        Author GetAuthorById(int Id);
+        Author? GetAuthorById(int Id);
         IEnumerable<Author> GetAuthors();
     }
 }

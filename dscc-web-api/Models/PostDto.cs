@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace dscc_web_api.Models
 {
-    public class Post
+    public class PostDto
     {
-        public int PostId { get; set; }
-
         [Required]
         public string Title { get; set; }
 
@@ -22,8 +19,5 @@ namespace dscc_web_api.Models
         public DateTime LastUpdated { get; set; }
 
         public int AuthorId { get; set; }
-
-        [JsonIgnore]
-        public Author Author { get; set; }
     }
 }

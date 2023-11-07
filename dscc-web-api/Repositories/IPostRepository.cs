@@ -7,7 +7,7 @@ namespace dscc_web_api.Repositories
         void InsertPost(Post post);
         void UpdatePost(Post post);
         void DeletePost(int postId);
-        Post GetPostById(int Id);
+        Post? GetPostById(int Id);
         IEnumerable<Post> GetPosts();
     }
 }

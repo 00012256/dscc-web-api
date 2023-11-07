@@ -34,29 +34,46 @@ namespace dscc_web_api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateAuthor([FromBody] Author author)
+        public IActionResult CreateAuthor([FromBody] AuthorDto authorDto)
         {
-            if (author == null)
+            if (authorDto == null)
             {
                 return BadRequest();
             }
+
+            var author = new Author
+            {
+                FirstName = authorDto.FirstName,
+                LastName = authorDto.LastName,
+                Email = authorDto.Email,
+                Biography = authorDto.Biography
+            };
+
             _authorRepository.InsertAuthor(author);
             return CreatedAtRoute("GetAuthor", new { id = author.AuthorId }, author);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateAuthor(int id, [FromBody] Author author)
+        public IActionResult UpdateAuthor(int id, [FromBody] AuthorDto authorDto)
         {
-            if (author == null || id != author.AuthorId)
+            if (authorDto == null)
             {
                 return BadRequest();
             }
+
             var existingAuthor = _authorRepository.GetAuthorById(id);
             if (existingAuthor == null)
             {
                 return NotFound();
             }
-            _authorRepository.UpdateAuthor(author);
+
+            // Update properties except for AuthorId and Posts
+            existingAuthor.FirstName = authorDto.FirstName;
+            existingAuthor.LastName = authorDto.LastName;
+            existingAuthor.Email = authorDto.Email;
+            existingAuthor.Biography = authorDto.Biography;
+
+            _authorRepository.UpdateAuthor(existingAuthor);
             return NoContent();
         }
 
